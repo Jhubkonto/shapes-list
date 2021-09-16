@@ -31,7 +31,6 @@ const Session = () => {
             </div>
             <div className="session--grid__cell">
                 <div className="session--flexbox">
-                    <h1 className="session--flexbox__item">Available shapes</h1>
                     <div className="session--flexbox__item">
                         <MinusIcon />
                         <SquareShape />
