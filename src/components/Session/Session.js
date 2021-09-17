@@ -7,6 +7,7 @@ import { SquareShape } from '../SquareShape/SquareShape';
 import { CircleShape } from '../CircleShape/CircleShape';
 import { TriangleShape } from '../TriangleShape/TriangleShape';
 import { Button } from '../Button/Button';
+import Dropdown from '../Dropdown/Dropdown';
 
 const Session = () => {
 
@@ -31,21 +32,7 @@ const Session = () => {
             </div>
             <div className="session--grid__cell">
                 <div className="session--flexbox">
-                    <div className="session--flexbox__item">
-                        <MinusIcon />
-                        <SquareShape />
-                        <PlusIcon />
-                    </div>
-                    <div className="session--flexbox__item">
-                        <MinusIcon />
-                        <CircleShape />
-                        <PlusIcon />
-                    </div>
-                    <div className="session--flexbox__item">
-                        <MinusIcon />
-                        <TriangleShape />
-                        <PlusIcon />
-                    </div>
+                    <Dropdown />
                 </div>
             </div>
         </div>
