@@ -1,6 +1,11 @@
-.svgIsButton{
+button {
+    background-color: Transparent;
+    border-radius: 150px;
+    cursor: pointer;
+}
+
+.svgIsButton {
     svg:hover {
         fill: rgb(255, 0, 0);
     }
 }
-

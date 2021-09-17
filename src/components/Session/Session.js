@@ -2,10 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Session.scss';
 import { PlusIcon } from '../PlusIcon/PlusIcon';
-import { MinusIcon } from '../MinusIcon/MinusIcon';
-import { SquareShape } from '../SquareShape/SquareShape';
-import { CircleShape } from '../CircleShape/CircleShape';
-import { TriangleShape } from '../TriangleShape/TriangleShape';
 import { Button } from '../Button/Button';
 import Dropdown from '../Dropdown/Dropdown';
 
