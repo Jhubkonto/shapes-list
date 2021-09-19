@@ -1,40 +1,57 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './Session.scss';
-import { PlusIcon } from '../PlusIcon/PlusIcon';
-import { Button } from '../Button/Button';
-import Dropdown from '../Dropdown/Dropdown';
+import React from 'react'
+import './Session.scss'
+import { PlusIcon } from '../InteractiveElements/PlusIcon/PlusIcon'
+import { Button } from '../InteractiveElements/Button/Button'
+import Dropdown from '../InteractiveElements/Dropdown/Dropdown'
+import { connect } from 'react-redux'
+import { ShapeMapper } from '../ShapeMapper/ShapeMapper'
 
-const Session = () => {
+const Session = ({ shapes }) => {
+    const shapesList = shapes.length
 
     return (
-        <div className="session--grid">
-            <div className="session--grid__cell">
-                <div className="session--flexbox">
-                    <div className="session--flexbox__item">
-                        <PlusIcon newSize="256"/>
+        <React.Fragment>
+            <div className="session--grid">
+                <div className="session--grid__cell">
+                    <div className="session--flexbox">
+                        <div className="session--flexbox__item">
+                            <PlusIcon newSize="256" />
+                        </div>
+                    </div>
+                </div>
+                <div className="session--grid__cell">
+                    <div className="session--flexbox">
+                        <div className="session--flexbox__item">
+                            <Button>Shuffle shapes</Button>
+                        </div>
+                        <div className="session--flexbox__item">
+                            <Button>Delete all shapes</Button>
+                        </div>
+                    </div>
+                </div>
+                <div className="session--grid__cell">
+                    <div className="session--flexbox">
+                        <Dropdown />
                     </div>
                 </div>
             </div>
-            <div className="session--grid__cell">
-                <div className="session--flexbox">
-                    <div className="session--flexbox__item">
-                        <Button>Shuffle shapes</Button>
-                    </div>
-                    <div className="session--flexbox__item">
-                        <Button>Delete all shapes</Button>
+            {shapesList && (
+                <div className="session--shape-display">
+                    <div className="session--shape-display__item">
+                        {shapes.map((shape) => (
+                            <ShapeMapper>{shape}</ShapeMapper>
+                        ))}
                     </div>
                 </div>
-            </div>
-            <div className="session--grid__cell">
-                <div className="session--flexbox">
-                    <Dropdown />
-                </div>
-            </div>
-        </div>
-    );
-};
+            )}
+        </React.Fragment>
+    )
+}
 
-Session.propTypes = {};
+const mapStateToProps = (state) => {
+    return {
+        shapes: state.shapes,
+    }
+}
 
-export default Session;
+export default connect(mapStateToProps)(Session)

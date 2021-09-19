@@ -22,3 +22,19 @@
         padding: 10px;
     }
 }
+
+.session--shape-display {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    &__item {
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+    }
+
+    &__item:hover {
+        cursor: pointer;
+    }
+}
