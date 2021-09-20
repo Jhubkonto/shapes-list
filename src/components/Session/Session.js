@@ -8,22 +8,6 @@ import { ShapeMapper } from "../ShapeMapper/ShapeMapper";
 
 const Session = ({ shapes }) => {
   const shapeList = shapes.length;
-  console.log(shapes + "In Session.js");
-  // const [shapeList, setShapeList] = useState(initShapes.shapes);
-
-  // const addShape = (shape) => {
-  //   const existingShape = shapeList.find((x) => x.title === shape.title);
-  //   if (existingShape) {
-  //     const incrementedShapeList = shapeList.forEach((x) => {
-  //       if (x.title === shape.title) {
-  //         x.count += 1;
-  //       }
-  //     });
-  //     setShapeList(incrementedShapeList);
-  //   } else {
-  //     setShapeList(setShapeList.push({ ...shape, count: 1 }));
-  //   }
-  // };
 
   return (
     <React.Fragment>

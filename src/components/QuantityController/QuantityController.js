@@ -3,20 +3,19 @@ import { connect } from "react-redux";
 import {
   increaseShapeQuantityByOne,
   decreaseShapeQuantityByOne,
-  deleteAllShapes,
 } from "../actions/shapeActions";
 import { MinusIcon } from "../InteractiveElements/MinusIcon/MinusIcon";
 import { PlusIcon } from "../InteractiveElements/PlusIcon/PlusIcon";
 
 export const QuantityController = ({
   children,
-  shapes,
   shapeType,
+  shapes,
   addQuantity,
   subtractQuantity,
 }) => {
-  console.log(shapeType);
-  // console.log(shapes);
+  console.log("Log from QuantityController: ");
+  console.log(shapes);
 
   const handleAddQuantity = () => {
     addQuantity(shapeType);

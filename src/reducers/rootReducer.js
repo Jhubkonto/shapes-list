@@ -1,9 +1,9 @@
 import {
   ADD_RANDOM_SHAPE,
+  DECREASE_SHAPE_QUANTITY_BY_ONE,
   DELETE_ALL_OF_SHAPE_TYPE,
   DELETE_ALL_SHAPES,
-  INCREASE_SHAPE_BY_ONE,
-  REDUCE_SHAPE_QUANTITY_BY_ONE,
+  INCREASE_SHAPE_QUANTITY_BY_ONE,
   SHUFFLE_SHAPES,
 } from "../components/actions/action-types/shape-actions";
 
@@ -36,26 +36,26 @@ const rootReducer = (state = initState, action) => {
     };
   }
 
-  if (action.type === REDUCE_SHAPE_QUANTITY_BY_ONE) {
+  if (action.type === DECREASE_SHAPE_QUANTITY_BY_ONE) {
     let shapeToDelete = state.shapes.find(
       (shape) => action.title === shape.title
     );
-
-    let newTotalShapes = state.shapes.shapeToDelete.count - 1;
-    console.log("REDUCE_SHAPE_BY_ONE: " + shapeToDelete);
-    // TODO: Lookup syntax for how to return the action correctly
+    const newShapes = state.shapes;
+    console.log("DECREASE_SHAPE_QUANTITY_BY_ONE: " + shapeToDelete.title);
+    for (let shape of newShapes) {
+      if (shape.title === action.title) {
+        shape.count -= 1;
+      }
+    }
     return {
       ...state,
     };
   }
 
-  if (action.type === INCREASE_SHAPE_BY_ONE) {
+  if (action.type === INCREASE_SHAPE_QUANTITY_BY_ONE) {
     let shapeToAdd = state.shapes.find((shape) => action.title === shape.title);
-
-    // let newTotalShapes = state.shapes.shapeToDelete.count + 1;
-    console.log("INCREASE_SHAPE_BY_ONE: " + shapeToAdd.title);
     const newShapes = state.shapes;
-    console.log(state.shapes);
+    console.log("INCREASE_SHAPE_QUANTITY_BY_ONE: " + shapeToAdd.title);
     for (let shape of newShapes) {
       if (shape.title === action.title) {
         shape.count += 1;

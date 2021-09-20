@@ -2,8 +2,8 @@ import {
   ADD_RANDOM_SHAPE,
   DELETE_ALL_OF_SHAPE_TYPE,
   DELETE_ALL_SHAPES,
-  INCREASE_SHAPE_BY_ONE,
-  REDUCE_SHAPE_QUANTITY_BY_ONE,
+  INCREASE_SHAPE_QUANTITY_BY_ONE,
+  DECREASE_SHAPE_QUANTITY_BY_ONE,
   SHUFFLE_SHAPES,
 } from "./action-types/shape-actions";
 
@@ -24,14 +24,14 @@ export const deleteAllShapeType = (title) => {
 //reduce shape quantity by one action
 export const decreaseShapeQuantityByOne = (title) => {
   return {
-    type: REDUCE_SHAPE_QUANTITY_BY_ONE,
+    type: DECREASE_SHAPE_QUANTITY_BY_ONE,
     title,
   };
 };
 //increase shape quantity by one action
 export const increaseShapeQuantityByOne = (title) => {
   return {
-    type: INCREASE_SHAPE_BY_ONE,
+    type: INCREASE_SHAPE_QUANTITY_BY_ONE,
     title,
   };
 };
