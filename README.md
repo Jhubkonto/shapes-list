@@ -1,3 +1,9 @@
+# shapes-list
+A test of what I know concerning core ReactJS concepts and a learning experience!
+
+# Summary
+I tried to componentize as many elements and functions in order to break them down into smaller re-usable parts as that helps me to determine how I can piece everything together and what I'll need next. Some parts of the project I may have overcomplicated such as the way Dropdown, ShapeMapper and QuantityController work together. In hindsight, I'd tackle that differently.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -14,57 +20,49 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Project structure
+```shell
+App
+└── Session
+    ├── rootReducer.js
+    ├── PlusIcon
+    ├── Button
+    ├── Dropdown
+    │      ├── DropdownArrow
+    │      ├── QuantityController
+    │      │        ├── PlusIcon
+    │      │        ├── MinusIcon
+    │      │        └── rootReducer.js
+    │      └── ShapeMapper
+    │      │        ├── Square
+    │      │        ├── Triangle
+    │      │        └── Circle
+    │      └── config.js
+    └── ShapeMapper
+           ├── Square
+           ├── Triangle
+           └── Circle
+```
 
-### `yarn build`
+# Config & available reducers
+I chose to initialize the array object for the dropdown box in a `config.js`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The available reducers are as follows:
+- `ADD_RANDOM_SHAPE`
+- `DELETE_ALL_OF_SHAPE_TYPE`
+- `DELETE_ALL_SHAPES`
+- `DECREASE_SHAPE_QUANTITY_BY_ONE`
+- `INCREASE_SHAPE_QUANTITY_BY_ONE`
+- `SHUFFLE_SHAPES`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Take away
+Putting the project together was challenging, I came accross concepts that I'd touched upon but never had to implement on my own before. Implementing the Redux store took a lot longer than expected but once in place, made accessing the global array of shape objects easier than it otherwise would have been by passing down levels of components via props.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Things I hadn't considered weren't reacting the way I expected. One example, if trying to use the state directly mapped via props as a condition for rendering, upon the redux state being updated, a functional component won't re-render without the use of state hooks. I ran into this issue upon updating the shape counter.
 
-### `yarn eject`
+I also spent far too long trying to figure out why the redux state wasn't being called in QuantityController and realised it was because I'd used a default export and had tried to import it as a named import.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+There are still reducers left to implement & I need some state hooks to help me re-render the page on redux state change.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Overall a rewarding experience
