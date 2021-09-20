@@ -1,3 +1,7 @@
 export const initShapes = {
-  shapes: [{ title: "Square" }, { title: "Triangle" }, { title: "Circle" }],
+  shapes: [
+    { title: "Square", count: 1 },
+    { title: "Triangle", count: 1 },
+    { title: "Circle", count: 1 },
+  ],
 };

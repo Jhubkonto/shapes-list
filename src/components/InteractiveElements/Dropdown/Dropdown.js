@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import { Circle } from "../../Shapes/CircleShape/Circle";
 import { DownArrow } from "../../DownArrrow/DownArrow";
-import { QuantityController } from "../../QuantityController/QuantityController";
-import { Square } from "../../Shapes/SquareShape/Square";
-import { Triangle } from "../../Shapes/TriangleShape/Triangle";
+import QuantityController from "../../QuantityController/QuantityController";
 import "./Dropdown.scss";
 import { ShapeMapper } from "../../ShapeMapper/ShapeMapper";
 import { initShapes } from "../../config";
@@ -25,11 +22,12 @@ const Dropdown = ({ quantitative, children }) => {
       {open && (
         <ul className="dropdown--list">
           {quantitative ? (
-            initShapes.shapes.map((shapes) => {
+            initShapes.shapes.map((shape) => {
+              // One component here that takes a shape and has a plus and minus
               return (
                 <li className="dropdown--list__item">
                   <QuantityController>
-                    <ShapeMapper>{shapes}</ShapeMapper>
+                    <ShapeMapper>{shape}</ShapeMapper>
                   </QuantityController>
                 </li>
               );

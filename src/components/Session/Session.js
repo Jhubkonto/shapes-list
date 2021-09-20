@@ -5,9 +5,25 @@ import { Button } from "../InteractiveElements/Button/Button";
 import Dropdown from "../InteractiveElements/Dropdown/Dropdown";
 import { connect } from "react-redux";
 import { ShapeMapper } from "../ShapeMapper/ShapeMapper";
+import { initShapes } from "../config";
 
 const Session = ({ shapes }) => {
-  const shapesList = shapes.length;
+  const shapeList = shapes.length;
+  // const [shapeList, setShapeList] = useState(initShapes.shapes);
+
+  // const addShape = (shape) => {
+  //   const existingShape = shapeList.find((x) => x.title === shape.title);
+  //   if (existingShape) {
+  //     const incrementedShapeList = shapeList.forEach((x) => {
+  //       if (x.title === shape.title) {
+  //         x.count += 1;
+  //       }
+  //     });
+  //     setShapeList(incrementedShapeList);
+  //   } else {
+  //     setShapeList(setShapeList.push({ ...shape, count: 1 }));
+  //   }
+  // };
 
   return (
     <React.Fragment>
@@ -35,7 +51,7 @@ const Session = ({ shapes }) => {
           </div>
         </div>
       </div>
-      {shapesList && (
+      {shapeList && (
         <div className="session--shape-display">
           <div className="session--shape-display__item">
             {shapes.map((shape) => (
@@ -49,6 +65,7 @@ const Session = ({ shapes }) => {
 };
 
 const mapStateToProps = (state) => {
+  console.log("This is Session");
   return {
     shapes: state.shapes,
   };

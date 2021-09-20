@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import { MinusIcon } from "../InteractiveElements/MinusIcon/MinusIcon";
 import { PlusIcon } from "../InteractiveElements/PlusIcon/PlusIcon";
 
-export const QuantityController = ({ shapes, children }) => {
-  //   console.log(children.type.name);
+export const QuantityController = ({ children, childType, shapes }) => {
+  console.log(shapes);
+
   const handleAddShapeType = () => {
     console.log("Add shape type");
   };
@@ -25,7 +26,7 @@ export const QuantityController = ({ shapes, children }) => {
 };
 
 const mapStateToProps = (state) => {
-  // let title = children.type.name
+  console.log("This is mapStateToProps in Quantity controller");
   let title = "Square";
   return {
     shapes: state.shapes.find((shape) => shape.title === title),
