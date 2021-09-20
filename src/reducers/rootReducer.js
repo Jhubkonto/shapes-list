@@ -1,20 +1,30 @@
+import {
+  ADD_RANDOM_SHAPE,
+  DELETE_ALL_OF_SHAPE_TYPE,
+  DELETE_ALL_SHAPES,
+  INCREASE_SHAPE_BY_ONE,
+  REDUCE_SHAPE_QUANTITY_BY_ONE,
+  SHUFFLE_SHAPES,
+} from "../components/actions/action-types/shape-actions";
+
 const initState = {
   shapes: [
-    { title: "Square", count: 1 },
+    { title: "Square", count: 5 },
     { title: "Triangle", count: 1 },
     { title: "Circle", count: 1 },
   ],
 };
 
 const rootReducer = (state = initState, action) => {
-  if (action.type === "DELETE_ALL_SHAPES") {
+  if (action.type === DELETE_ALL_SHAPES) {
     // TODO: Lookup syntax for how to return the action correctly
+    state.shapes = [];
     return {
       ...state,
     };
   }
 
-  if (action.type === "DELETE_ALL_OF_SHAPE_TYPE") {
+  if (action.type === DELETE_ALL_OF_SHAPE_TYPE) {
     // Remove all instances of shape from array
     let newShapes = state.shapes.filter((shape) => {
       return action.title !== shape.title;
@@ -26,7 +36,7 @@ const rootReducer = (state = initState, action) => {
     };
   }
 
-  if (action.type === "REDUCE_SHAPE_BY_ONE") {
+  if (action.type === REDUCE_SHAPE_QUANTITY_BY_ONE) {
     let shapeToDelete = state.shapes.find(
       (shape) => action.title === shape.title
     );
@@ -39,18 +49,25 @@ const rootReducer = (state = initState, action) => {
     };
   }
 
-  if (action.type === "INCREASE_SHAPE_BY_ONE") {
+  if (action.type === INCREASE_SHAPE_BY_ONE) {
     let shapeToAdd = state.shapes.find((shape) => action.title === shape.title);
 
-    let newTotalShapes = state.shapes.shapeToDelete.count + 1;
-    console.log("INCREASE_SHAPE_BY_ONE: " + shapeToAdd);
-    // TODO: Lookup syntax for how to return the action correctly
+    // let newTotalShapes = state.shapes.shapeToDelete.count + 1;
+    console.log("INCREASE_SHAPE_BY_ONE: " + shapeToAdd.title);
+    const newShapes = state.shapes;
+    console.log(state.shapes);
+    for (let shape of newShapes) {
+      if (shape.title === action.title) {
+        shape.count += 1;
+      }
+    }
     return {
       ...state,
+      shapes: newShapes,
     };
   }
 
-  if (action.type === "ADD_RANDOM_SHAPE") {
+  if (action.type === ADD_RANDOM_SHAPE) {
     let randomShapeToAdd =
       state.shapes[Math.floor(Math.random() * state.shapes.length)];
 
@@ -62,7 +79,7 @@ const rootReducer = (state = initState, action) => {
     };
   }
 
-  if (action.type === "SHUFFLE_SHAPES") {
+  if (action.type === SHUFFLE_SHAPES) {
     let randomShapeToShuffle =
       state.shapes[Math.floor(Math.random() * state.shapes.length)];
 

@@ -1,17 +1,29 @@
 import React from "react";
 import { connect } from "react-redux";
+import {
+  increaseShapeQuantityByOne,
+  decreaseShapeQuantityByOne,
+  deleteAllShapes,
+} from "../actions/shapeActions";
 import { MinusIcon } from "../InteractiveElements/MinusIcon/MinusIcon";
 import { PlusIcon } from "../InteractiveElements/PlusIcon/PlusIcon";
 
-export const QuantityController = ({ children, childType, shapes }) => {
-  console.log(shapes.title);
+export const QuantityController = ({
+  children,
+  shapes,
+  shapeType,
+  addQuantity,
+  subtractQuantity,
+}) => {
+  console.log(shapeType);
+  // console.log(shapes);
 
   const handleAddQuantity = () => {
-    console.log("Add shape type");
+    addQuantity(shapeType);
   };
 
   const handleDeleteAllOfShapeType = () => {
-    console.log("Delete all of shape type");
+    subtractQuantity(shapeType);
   };
 
   return (
@@ -26,18 +38,18 @@ export const QuantityController = ({ children, childType, shapes }) => {
 };
 
 const mapStateToProps = (state) => {
-  // console.log("This is mapStateToProps in Quantity controller");
-  let title = "Triangle";
   return {
-    shapes: state.shapes.find((shape) => shape.title === title),
-    // shapes: state.shapes,
+    shapes: state.shapes,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteShape: (title) => {
-      dispatch({ type: "DELETE_SHAPE", title: title });
+    addQuantity: (title) => {
+      dispatch(increaseShapeQuantityByOne(title));
+    },
+    subtractQuantity: (title) => {
+      dispatch(decreaseShapeQuantityByOne(title));
     },
   };
 };

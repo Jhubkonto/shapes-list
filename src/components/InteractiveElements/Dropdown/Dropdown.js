@@ -9,6 +9,7 @@ const Dropdown = ({ quantitative, children }) => {
   const [open, setOpen] = useState(false);
   const toggle = () => setOpen(!open);
 
+  // TODO: Remove quantitive condtional rendering
   return (
     <div className="dropdown--wrapper">
       <div
@@ -26,7 +27,7 @@ const Dropdown = ({ quantitative, children }) => {
               // One component here that takes a shape and has a plus and minus
               return (
                 <li className="dropdown--list__item">
-                  <QuantityController>
+                  <QuantityController shapeType={shape.title}>
                     <ShapeMapper>{shape}</ShapeMapper>
                   </QuantityController>
                 </li>
