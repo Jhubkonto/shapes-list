@@ -6,8 +6,9 @@ import { Square } from "../../Shapes/SquareShape/Square";
 import { Triangle } from "../../Shapes/TriangleShape/Triangle";
 import "./Dropdown.scss";
 import { ShapeMapper } from "../../ShapeMapper/ShapeMapper";
+import { initShapes } from "../../config";
 
-const Dropdown = ({ quantitative }) => {
+const Dropdown = ({ quantitative, children }) => {
   const [open, setOpen] = useState(false);
   const toggle = () => setOpen(!open);
 
@@ -23,25 +24,19 @@ const Dropdown = ({ quantitative }) => {
       </div>
       {open && (
         <ul className="dropdown--list">
-          <li className="dropdown--list__item">
-            {quantitative ? (
-              <QuantityController>
-                {/* TODO: Conditionally render a component here (ShapeMapper)*/}
-              </QuantityController>
-            ) : (
-              <Square />
-            )}
-          </li>
-          <li className="dropdown--list__item">
-            <QuantityController>
-              <Circle />
-            </QuantityController>
-          </li>
-          <li className="dropdown--list__item">
-            <QuantityController>
-              <Triangle />
-            </QuantityController>
-          </li>
+          {quantitative ? (
+            initShapes.shapes.map((shapes) => {
+              return (
+                <li className="dropdown--list__item">
+                  <QuantityController>
+                    <ShapeMapper>{shapes}</ShapeMapper>
+                  </QuantityController>
+                </li>
+              );
+            })
+          ) : (
+            <li className="dropdown--list__item">{children}</li>
+          )}
         </ul>
       )}
     </div>

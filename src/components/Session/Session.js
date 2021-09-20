@@ -31,7 +31,7 @@ const Session = ({ shapes }) => {
         </div>
         <div className="session--grid__cell">
           <div className="session--flexbox">
-            <Dropdown />
+            <Dropdown quantitative />
           </div>
         </div>
       </div>

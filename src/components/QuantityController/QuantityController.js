@@ -4,7 +4,7 @@ import { MinusIcon } from "../InteractiveElements/MinusIcon/MinusIcon";
 import { PlusIcon } from "../InteractiveElements/PlusIcon/PlusIcon";
 
 export const QuantityController = ({ shapes, children }) => {
-  console.log(children.type.name);
+  //   console.log(children.type.name);
   const handleAddShapeType = () => {
     console.log("Add shape type");
   };
