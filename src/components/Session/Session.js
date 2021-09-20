@@ -2,9 +2,9 @@ import React from "react";
 import "./Session.scss";
 import { PlusIcon } from "../InteractiveElements/PlusIcon/PlusIcon";
 import { Button } from "../InteractiveElements/Button/Button";
-import Dropdown from "../InteractiveElements/Dropdown/Dropdown";
 import { connect } from "react-redux";
 import { ShapeMapper } from "../ShapeMapper/ShapeMapper";
+import ShapeDropdown from "../InteractiveElements/ShapeDropdown/ShapeDropdown";
 
 const Session = ({ shapes }) => {
   const shapeList = shapes.length;
@@ -31,7 +31,7 @@ const Session = ({ shapes }) => {
         </div>
         <div className="session--grid__cell">
           <div className="session--flexbox">
-            <Dropdown quantitative />
+            <ShapeDropdown />
           </div>
         </div>
       </div>
