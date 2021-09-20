@@ -1,7 +1,6 @@
 import React from 'react'
-import './CircleShape'
 
-export const CircleShape = () => {
+export const Circle = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"

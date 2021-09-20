@@ -1,19 +1,19 @@
 import React from 'react'
-import { CircleShape } from '../Shapes/CircleShape/CircleShape'
-import { SquareShape } from '../Shapes/SquareShape/SquareShape'
-import { TriangleShape } from '../Shapes/TriangleShape/TriangleShape'
+import { Circle } from '../Shapes/CircleShape/Circle'
+import { Square } from '../Shapes/SquareShape/Square'
+import { Triangle } from '../Shapes/TriangleShape/Triangle'
 
 export const ShapeMapper = ({ children }) => {
     const renderShape = () => {
-        switch (children) {
+        switch (children.title) {
             case 'Square': {
-                return <SquareShape />
+                return <Square />
             }
             case 'Triangle': {
-                return <TriangleShape />
+                return <Triangle />
             }
             case 'Circle': {
-                return <CircleShape />
+                return <Circle />
             }
             default: {
                 return

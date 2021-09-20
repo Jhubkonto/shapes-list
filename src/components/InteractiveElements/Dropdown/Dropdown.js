@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { CircleShape } from '../../Shapes/CircleShape/CircleShape'
+import { Circle } from '../../Shapes/CircleShape/Circle'
 import { DownArrow } from '../../DownArrrow/DownArrow'
 import { QuantityController } from '../../QuantityController/QuantityController'
-import { SquareShape } from '../../Shapes/SquareShape/SquareShape'
-import { TriangleShape } from '../../Shapes/TriangleShape/TriangleShape'
+import { Square } from '../../Shapes/SquareShape/Square'
+import { Triangle } from '../../Shapes/TriangleShape/Triangle'
 import './Dropdown.scss'
 
 const Dropdown = () => {
@@ -24,17 +24,17 @@ const Dropdown = () => {
                 <ul className="dropdown--list">
                     <li className="dropdown--list__item">
                         <QuantityController>
-                            <SquareShape />
+                            <Square />
                         </QuantityController>
                     </li>
                     <li className="dropdown--list__item">
                         <QuantityController>
-                            <CircleShape />
+                            <Circle />
                         </QuantityController>
                     </li>
                     <li className="dropdown--list__item">
                         <QuantityController>
-                            <TriangleShape />
+                            <Triangle />
                         </QuantityController>
                     </li>
                 </ul>
