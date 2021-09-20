@@ -5,10 +5,10 @@ import { Button } from "../InteractiveElements/Button/Button";
 import Dropdown from "../InteractiveElements/Dropdown/Dropdown";
 import { connect } from "react-redux";
 import { ShapeMapper } from "../ShapeMapper/ShapeMapper";
-import { initShapes } from "../config";
 
 const Session = ({ shapes }) => {
   const shapeList = shapes.length;
+  console.log(shapes + "In Session.js");
   // const [shapeList, setShapeList] = useState(initShapes.shapes);
 
   // const addShape = (shape) => {
@@ -65,7 +65,6 @@ const Session = ({ shapes }) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log("This is Session");
   return {
     shapes: state.shapes,
   };

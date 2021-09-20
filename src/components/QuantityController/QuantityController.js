@@ -4,32 +4,33 @@ import { MinusIcon } from "../InteractiveElements/MinusIcon/MinusIcon";
 import { PlusIcon } from "../InteractiveElements/PlusIcon/PlusIcon";
 
 export const QuantityController = ({ children, childType, shapes }) => {
-  console.log(shapes);
+  console.log(shapes.title);
 
-  const handleAddShapeType = () => {
+  const handleAddQuantity = () => {
     console.log("Add shape type");
   };
 
-  const handleDeleteAllShapeType = () => {
+  const handleDeleteAllOfShapeType = () => {
     console.log("Delete all of shape type");
   };
 
   return (
     <div className="quantity-control--flexbox-wrapper">
       <div className="quantity-control--flexbox-wrapper__header">
-        <PlusIcon clickHandler={handleAddShapeType} />
+        <PlusIcon clickHandler={handleAddQuantity} />
         {children}
-        <MinusIcon clickHandler={handleDeleteAllShapeType} />
+        <MinusIcon clickHandler={handleDeleteAllOfShapeType} />
       </div>
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
-  console.log("This is mapStateToProps in Quantity controller");
-  let title = "Square";
+  // console.log("This is mapStateToProps in Quantity controller");
+  let title = "Triangle";
   return {
     shapes: state.shapes.find((shape) => shape.title === title),
+    // shapes: state.shapes,
   };
 };
 
