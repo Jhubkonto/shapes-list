@@ -28,7 +28,7 @@ App
     ├── rootReducer.js
     ├── PlusIcon
     ├── Button
-    ├── Dropdown
+    ├── ShapeDropdown
     │      ├── DropdownArrow
     │      ├── QuantityController
     │      │        ├── PlusIcon
