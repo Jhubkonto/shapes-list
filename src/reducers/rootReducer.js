@@ -17,10 +17,11 @@ const initState = {
 
 const rootReducer = (state = initState, action) => {
   if (action.type === DELETE_ALL_SHAPES) {
-    // TODO: Lookup syntax for how to return the action correctly
-    state.shapes = [];
+    const newShapes = [];
+    console.log("DELETE_ALL_SHAPES: " + newShapes);
     return {
       ...state,
+      shapes: newShapes,
     };
   }
 
@@ -40,8 +41,8 @@ const rootReducer = (state = initState, action) => {
     let shapeToDelete = state.shapes.find(
       (shape) => action.title === shape.title
     );
-    const newShapes = state.shapes;
     console.log("DECREASE_SHAPE_QUANTITY_BY_ONE: " + shapeToDelete.title);
+    const newShapes = state.shapes;
     for (let shape of newShapes) {
       if (shape.title === action.title) {
         shape.count -= 1;
@@ -55,8 +56,8 @@ const rootReducer = (state = initState, action) => {
 
   if (action.type === INCREASE_SHAPE_QUANTITY_BY_ONE) {
     let shapeToAdd = state.shapes.find((shape) => action.title === shape.title);
-    const newShapes = state.shapes;
     console.log("INCREASE_SHAPE_QUANTITY_BY_ONE: " + shapeToAdd.title);
+    const newShapes = state.shapes;
     for (let shape of newShapes) {
       if (shape.title === action.title) {
         shape.count += 1;

@@ -5,9 +5,14 @@ import { Button } from "../InteractiveElements/Button/Button";
 import { connect } from "react-redux";
 import { ShapeMapper } from "../ShapeMapper/ShapeMapper";
 import ShapeDropdown from "../InteractiveElements/ShapeDropdown/ShapeDropdown";
+import { deleteAllShapes } from "../actions/shapeActions";
 
-const Session = ({ shapes }) => {
+const Session = ({ shapes, deleteAll }) => {
   const shapeList = shapes.length;
+
+  const handleDeleteAll = () => {
+    deleteAll();
+  };
 
   return (
     <React.Fragment>
@@ -25,7 +30,7 @@ const Session = ({ shapes }) => {
               <Button>Shuffle shapes</Button>
             </div>
             <div className="session--flexbox__item">
-              <Button>Delete all shapes</Button>
+              <Button clickHandler={handleDeleteAll}>Delete all shapes</Button>
             </div>
           </div>
         </div>
@@ -54,4 +59,12 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Session);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteAll: () => {
+      dispatch(deleteAllShapes());
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Session);
