@@ -5,10 +5,14 @@ import { Button } from "../InteractiveElements/Button/Button";
 import { connect } from "react-redux";
 import { ShapeMapper } from "../ShapeMapper/ShapeMapper";
 import ShapeDropdown from "../InteractiveElements/ShapeDropdown/ShapeDropdown";
-import { addRandomShape, deleteAllShapes } from "../actions/shapeActions";
+import {
+  addRandomShape,
+  deleteAllShapes,
+  shuffleShapes,
+} from "../actions/shapeActions";
 
-const Session = ({ shapes, deleteAll, addRandom }) => {
-  const shapeList = shapes.length;
+const Session = ({ shapes, deleteAll, addRandom, shuffle }) => {
+  const hasShapes = shapes.length > 0;
 
   const handleDeleteAll = () => {
     deleteAll();
@@ -16,6 +20,10 @@ const Session = ({ shapes, deleteAll, addRandom }) => {
 
   const handleAddRandomShape = () => {
     addRandom();
+  };
+
+  const handleShuffle = () => {
+    shuffle();
   };
 
   return (
@@ -31,7 +39,7 @@ const Session = ({ shapes, deleteAll, addRandom }) => {
         <div className="session--grid__cell">
           <div className="session--flexbox">
             <div className="session--flexbox__item">
-              <Button>Shuffle shapes</Button>
+              <Button clickHandler={handleShuffle}>Shuffle shapes</Button>
             </div>
             <div className="session--flexbox__item">
               <Button clickHandler={handleDeleteAll}>Delete all shapes</Button>
@@ -44,7 +52,7 @@ const Session = ({ shapes, deleteAll, addRandom }) => {
           </div>
         </div>
       </div>
-      {shapeList && (
+      {hasShapes && (
         <div className="session--shape-display">
           <div className="session--shape-display__item">
             {shapes.map((shape) => (
@@ -70,6 +78,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     addRandom: () => {
       dispatch(addRandomShape());
+    },
+    shuffle: () => {
+      dispatch(shuffleShapes());
     },
   };
 };

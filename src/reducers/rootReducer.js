@@ -23,16 +23,6 @@ const rootReducer = (state = initState, action) => {
   }
 
   if (action.type === DELETE_ALL_OF_SHAPE_TYPE) {
-    // let shapeToDelete = state.shapes.find((shape) => {
-    //   return action.title === shape.title;
-    // });
-    // console.log("DELETE_ALL_OF_SHAPE_TYPE: " + shapeToDelete.title);
-    // const newShapes = state.shapes;
-    // for (let shape of newShapes) {
-    //   if (shape.title === action.title) {
-    //     shape.count = 0;
-    //   }
-    // }
     let filteredShapes = state.shapes.filter(
       (shape) => action.title !== shape.title
     );
@@ -60,14 +50,6 @@ const rootReducer = (state = initState, action) => {
   }
 
   if (action.type === INCREASE_SHAPE_QUANTITY_BY_ONE) {
-    // let shapeToAdd = state.shapes.find((shape) => action.title === shape.title);
-    // console.log("INCREASE_SHAPE_QUANTITY_BY_ONE: " + shapeToAdd.title);
-    // const newShapes = state.shapes;
-    // for (let shape of newShapes) {
-    //   if (shape.title === action.title) {
-    //     shape.count += 1;
-    //   }
-    // }
     const newShapes = state.shapes.concat({ title: action.title });
     return {
       ...state,
@@ -76,12 +58,6 @@ const rootReducer = (state = initState, action) => {
   }
 
   if (action.type === ADD_RANDOM_SHAPE) {
-    // let randomShapeToAdd =
-    //   state.shapes[Math.floor(Math.random() * state.shapes.length)];
-
-    // let newRandomShapeCount = state.shapes.randomShapeToAdd.count - 1;
-    // console.log();
-    // TODO: Lookup syntax for how to return the action correctly
     const randomElement =
       shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
     const newShapes = state.shapes.concat({ title: randomElement });
@@ -92,12 +68,16 @@ const rootReducer = (state = initState, action) => {
   }
 
   if (action.type === SHUFFLE_SHAPES) {
-    // let randomShapeToShuffle =
-    //   state.shapes[Math.floor(Math.random() * state.shapes.length)];
+    console.log("Shapes have been shuffled");
+    console.log("before shuffle", state.shapes);
+    const shuffledShapes = state.shapes;
+    // https://dev.to/codebubb/how-to-shuffle-an-array-in-javascript-2ikj
+    shuffledShapes.sort((a, b) => 0.5 - Math.random());
+    console.log("shuffledShapes", shuffledShapes);
 
-    // TODO: Lookup syntax for how to return the action correctly
     return {
       ...state,
+      shapes: shuffledShapes,
     };
   }
 

@@ -1,40 +1,40 @@
 .session--grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 
-    &__cell {
-        border: 5px solid black;
-        border-radius: 3px;
-        margin: 10px;
-        padding: 5px;
-    }
+  &__cell {
+    border: 5px solid black;
+    border-radius: 3px;
+    margin: 10px;
+    padding: 5px;
+  }
 }
 
 .session--flexbox {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    &__item {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
-    }
+  &__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
 }
 
 .session--shape-display {
+  display: flex;
+  flex-direction: row;
+
+  &__item {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    padding: 10px;
+  }
 
-    &__item {
-        display: flex;
-        flex-direction: row;
-        padding: 10px;
-    }
-
-    &__item:hover {
-        cursor: pointer;
-    }
+  &__item:hover {
+    cursor: pointer;
+  }
 }
