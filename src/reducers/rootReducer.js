@@ -9,15 +9,19 @@ import {
 
 const initState = {
   shapes: [
-    { title: "Square", count: 1 },
-    { title: "Triangle", count: 1 },
-    { title: "Circle", count: 1 },
+    { title: "Square", count: 0 },
+    { title: "Triangle", count: 0 },
+    { title: "Circle", count: 0 },
   ],
 };
 
 const rootReducer = (state = initState, action) => {
   if (action.type === DELETE_ALL_SHAPES) {
-    const newShapes = [];
+    const newShapes = [
+      { title: "Square", count: 0 },
+      { title: "Triangle", count: 0 },
+      { title: "Circle", count: 0 },
+    ];
     console.log("DELETE_ALL_SHAPES: " + newShapes);
     return {
       ...state,
@@ -27,10 +31,16 @@ const rootReducer = (state = initState, action) => {
 
   if (action.type === DELETE_ALL_OF_SHAPE_TYPE) {
     // Remove all instances of shape from array
-    let newShapes = state.shapes.filter((shape) => {
-      return action.title !== shape.title;
+    let shapeToDelete = state.shapes.find((shape) => {
+      return action.title === shape.title;
     });
-    // TODO: Lookup syntax for how to return the action correctly
+    console.log("DELETE_ALL_OF_SHAPE_TYPE: " + shapeToDelete.title);
+    const newShapes = state.shapes;
+    for (let shape of newShapes) {
+      if (shape.title === action.title) {
+        shape.count = 0;
+      }
+    }
     return {
       ...state,
       shapes: newShapes,

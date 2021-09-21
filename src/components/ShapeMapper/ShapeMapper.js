@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Circle } from "../Shapes/CircleShape/Circle";
 import { Square } from "../Shapes/SquareShape/Square";
 import { Triangle } from "../Shapes/TriangleShape/Triangle";
 
 export const ShapeMapper = ({ children }) => {
+  const [shapes, setShapes] = useState([]);
+
   const renderShape = () => {
     switch (children.title) {
       case "Square": {

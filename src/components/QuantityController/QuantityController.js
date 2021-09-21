@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import {
   increaseShapeQuantityByOne,
-  decreaseShapeQuantityByOne,
+  deleteAllShapeType,
 } from "../actions/shapeActions";
 import { MinusIcon } from "../InteractiveElements/MinusIcon/MinusIcon";
 import { PlusIcon } from "../InteractiveElements/PlusIcon/PlusIcon";
@@ -12,7 +12,7 @@ export const QuantityController = ({
   shapeType,
   shapes,
   addQuantity,
-  subtractQuantity,
+  deleteShapeType,
 }) => {
   console.log("Log from QuantityController: ");
   console.log(shapes);
@@ -22,7 +22,7 @@ export const QuantityController = ({
   };
 
   const handleDeleteAllOfShapeType = () => {
-    subtractQuantity(shapeType);
+    deleteShapeType(shapeType);
   };
 
   return (
@@ -47,8 +47,8 @@ const mapDispatchToProps = (dispatch) => {
     addQuantity: (title) => {
       dispatch(increaseShapeQuantityByOne(title));
     },
-    subtractQuantity: (title) => {
-      dispatch(decreaseShapeQuantityByOne(title));
+    deleteShapeType: (title) => {
+      dispatch(deleteAllShapeType(title));
     },
   };
 };
