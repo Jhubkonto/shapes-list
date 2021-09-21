@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Session.scss";
 import { PlusIcon } from "../InteractiveElements/PlusIcon/PlusIcon";
 import { Button } from "../InteractiveElements/Button/Button";
 import { connect } from "react-redux";
 import { ShapeMapper } from "../ShapeMapper/ShapeMapper";
 import ShapeDropdown from "../InteractiveElements/ShapeDropdown/ShapeDropdown";
-import { deleteAllShapes } from "../actions/shapeActions";
+import { addRandomShape, deleteAllShapes } from "../actions/shapeActions";
 
-const Session = ({ shapes, deleteAll }) => {
+const Session = ({ shapes, deleteAll, addRandom }) => {
   const shapeList = shapes.length;
 
   const handleDeleteAll = () => {
     deleteAll();
+  };
+
+  const handleAddRandomShape = () => {
+    addRandom();
   };
 
   return (
@@ -20,7 +24,7 @@ const Session = ({ shapes, deleteAll }) => {
         <div className="session--grid__cell">
           <div className="session--flexbox">
             <div className="session--flexbox__item">
-              <PlusIcon newSize="256" />
+              <PlusIcon clickHandler={handleAddRandomShape} newSize="256" />
             </div>
           </div>
         </div>
@@ -63,6 +67,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     deleteAll: () => {
       dispatch(deleteAllShapes());
+    },
+    addRandom: () => {
+      dispatch(addRandomShape());
     },
   };
 };
